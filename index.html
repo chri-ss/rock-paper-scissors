@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Rock Paper Scissors</title>
+    </head>
+    <body>
+        <script>
+            function computerPlay() {
+                let move = Math.floor(Math.random()*3);
+                
+                if (move === 0)
+                {
+                    return 'rock';
+                }
+                else if (move === 1)
+                {
+                    return 'paper'
+                }
+                else
+                {
+                    return 'scissors'
+                }
+            }
+
+            let playerWin = 0;
+            let computerWin = 0;
+            game();
+
+            function playRound(playerSelection, computerPlay) 
+            {
+                playerSelection === null ? playerSelection = prompt('please enter rock, paper or scissors') : playerSelection = playerSelection.toLowerCase();
+
+                let result;
+        
+                switch(playerSelection) {
+                    
+                    case 'rock':
+                        if (computerPlay === 'paper')
+                        {
+                            result = 'You lose, paper beats rock';
+                            ++computerWin;
+                        }
+                        else if (computerPlay === 'scissors')
+                        {
+                            result = 'You win, rock beats scissors';
+                            ++playerWin;
+                        }
+                        else
+                        {
+                            result = 'It\'s a tie.';
+                        }
+                        break;
+
+                    case 'paper':
+                        if (computerPlay === 'scissors')
+                        {
+                            result = 'You lose, scissors beats paper.';
+                            ++computerWin;
+                        }
+                        else if (computerPlay === 'rock')
+                        {
+                            result = 'You win, paper beats rock';
+                            ++playerWin;
+                        }
+                        else
+                        {
+                            result = 'It\'s a tie.';
+                        }
+                        break;
+
+                    case 'scissors':
+                        if (computerPlay === 'rock')
+                        {
+                            result = 'You lose, rock beats scissors.';
+                            ++computerWin;
+                        }
+                        else if (computerPlay === 'paper')
+                        {
+                            result = 'You win, scissors beats paper.';
+                            ++playerWin;
+                        }
+                        else
+                        {
+                            result = 'It\'s a tie';
+                        }
+                        break;
+
+                    default:
+                            result = 'No contest, please enter a valid option.';
+                            --i;
+                            break;
+                }
+                console.log(result);
+            }
+
+            function game() {
+                for (i = 0; i < 5; ++i)
+                {
+                    playRound(prompt('please enter rock, paper or scissors'), computerPlay());
+                    console.log(`   computer: ${computerWin}`);
+                    console.log(`   you: ${playerWin}`);
+                }
+
+                if (playerWin > computerWin)
+                {
+                    console.log('**Congrats you won against the computer.**');
+                }
+                else if (computerWin > playerWin)
+                {
+                    console.log('**The computer beat you.**');
+                }
+                else
+                {
+                    console.log('**Final result: tie.**');
+                }
+
+            }
+        </script>
+    </body>
+</html>
