@@ -5,28 +5,13 @@
         <title>Rock Paper Scissors</title>
     </head>
     <body>
-        <button class="btn rock">Rock</button>
-        <button class="btn paper">Paper</button>
-        <button class="btn scissors">Scissors</button>
+        <button class="rock">Rock</button>
+        <button class="paper">Paper</button>
+        <button class="scissors">Scissors</button>
 
         <div id="container"></div>
 
         <script>
-
-            const rock = document.querySelector('.rock');
-            rock.addEventListener('click', () => {
-                playRound('rock', computerPlay());
-            });
-
-            const paper = document.querySelector('.paper');
-            paper.addEventListener('click', () => {
-                playRound('paper', computerPlay());
-            });
-
-            const scissors = document.querySelector('.scissors');
-            scissors.addEventListener('click', () => {
-                playRound('scissors', computerPlay());
-            });
 
             function computerPlay() {
                 let move = Math.floor(Math.random()*3);
@@ -49,11 +34,53 @@
             let computerWin = 0;
             let result;
 
+            let roundCount = 0;
+
             const container = document.querySelector('#container'); 
 
             const resultDiv = document.createElement('div');  
             const compDiv = document.createElement('div');
             const playerDiv = document.createElement('div');
+
+            const final = document.createElement('div');
+
+            const rock = document.querySelector('.rock');
+            rock.addEventListener('click', () => {
+                if (playerWin === 5 || computerWin === 5)
+                {
+                    return;
+                }
+                else
+                {
+                    playRound('rock', computerPlay());
+                }
+            });
+
+            const paper = document.querySelector('.paper');
+            paper.addEventListener('click', () => {
+                if (playerWin === 5 || computerWin === 5)
+                {
+                    return;
+                }
+                else
+                {
+                    playRound('paper', computerPlay());
+                }
+            });
+
+            const scissors = document.querySelector('.scissors');
+            scissors.addEventListener('click', () => {
+                if (playerWin === 5 || computerWin === 5)
+                {
+                    return;
+                }
+                else
+                {
+                    playRound('scissors', computerPlay());
+                }
+            });
+
+            const btn = document.querySelector('button');
 
             function playRound(playerSelection, computerPlay)
             {
@@ -116,7 +143,8 @@
                             --i;
                             break;
                 }
-                console.log(result);
+                ++roundCount;
+                console.log(roundCount);
                 resultDiv.textContent = result; 
                 compDiv.textContent = `computer score: ${computerWin}`;
                 playerDiv.textContent = `your score: ${playerWin}`;
@@ -124,8 +152,24 @@
                 container.appendChild(compDiv);
                 container.appendChild(playerDiv);
 
+                if(playerWin === 5 || computerWin === 5)
+                {
+                    if (playerWin > computerWin)
+                    {
+                        final.textContent = 'Final Result: You Win!';
+                    }
+                    else if (computerWin > playerWin)
+                    {
+                        final.textContent = 'Final Result: You Lose!';
+                    }
+                    else
+                    {
+                        final.textContent = 'Final Result: Tie';
+                    }
+                    container.appendChild(final);
+                }
+                return;
             }
-
         </script>
     </body>
 </html>
