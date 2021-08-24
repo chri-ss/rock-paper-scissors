@@ -1,0 +1,31 @@
+html {
+    background-image: url("images/rock-paper.scissors.jpg");
+    background-repeat: no-repeat;
+    background-position: 500px 130px;
+    background-color:rgb(222, 236, 222);
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 50px;
+    grid-row-gap: 15vh;
+}
+
+button {
+    border-radius: 10px;
+    border: 3px solid rgb(23, 70, 23);
+    margin-top: 2vh;
+    padding: 2vh;
+    background-color: rgb(236, 243, 174);
+    font-family: 'Lobster', serif;
+    font-size: 24px;
+}
+
+div {
+    display: grid;
+    justify-content: center;
+    font-family: 'Lobster', serif;
+    font-size: 24px;
+    padding: 5px;
+}
