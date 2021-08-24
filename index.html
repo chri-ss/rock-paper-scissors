@@ -8,12 +8,14 @@
           href="https://fonts.googleapis.com/css?family=Lobster">
     </head>
     <body>
-        <button class="rock">Rock</button>
-        <button class="paper">Paper</button>
-        <button class="scissors">Scissors</button>
+        <button class="btn rock">Rock</button>
+        <button class="btn paper">Paper</button>
+        <button class="btn scissors">Scissors</button>
 
         <div id="container"></div>
 
+        <button class="reset">Reset</button>
+        
         <script>
 
             function computerPlay() {
@@ -84,6 +86,13 @@
             });
 
             const btn = document.querySelector('button');
+
+            const reset = document.querySelector('.reset');
+
+            reset.addEventListener('click', () => {
+                location.reload();
+                return false;
+            })
 
             function playRound(playerSelection, computerPlay)
             {
